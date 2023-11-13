@@ -4,18 +4,25 @@ document.querySelector("button").addEventListener("click", getFetch);
 function getFetch() {
   const poke = document.querySelector("input").value.toLowerCase();
   const url = "https://pokeapi.co/api/v2/pokemon/" + poke;
-  let pokeData = [];
+  let pokeType = [];
+  let pokeWeight = [];
+  let pokeHeight = [];
+  let pokeNo = [];
   let pokeImg = [];
 
   fetch(url)
     .then((res) => res.json()) // parse response as JSON
     .then((data) => {
       console.log(data);
-      pokeData.push(data.types[0].type.name);
+      pokeType.push(data.types[0].type.name);
+      pokeWeight.push(data.weight);
+      pokeHeight.push(data.types[0].type.name);
+      pokeNo.push(data.types[0].type.name);
       pokeImg.push(data.sprites.front_shiny);
 
       document.querySelector("#pokeImg1").src = pokeImg[0];
-      document.querySelector("#type").innerText = "Type: " + pokeData[0];
+      document.querySelector("#type").innerText = "Type: " + pokeType[0];
+      document.querySelector("#weight").innerText = "Weight: " + pokeWeight;
     })
     .catch((err) => {
       console.log(`error ${err}`);
