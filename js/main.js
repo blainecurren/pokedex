@@ -16,13 +16,15 @@ function getFetch() {
       console.log(data);
       pokeType.push(data.types[0].type.name);
       pokeWeight.push(data.weight);
-      pokeHeight.push(data.types[0].type.name);
-      pokeNo.push(data.types[0].type.name);
+      pokeHeight.push(data.height);
+      pokeNo.push(data.id);
       pokeImg.push(data.sprites.front_shiny);
 
       document.querySelector("#pokeImg1").src = pokeImg[0];
       document.querySelector("#type").innerText = "Type: " + pokeType[0];
       document.querySelector("#weight").innerText = "Weight: " + pokeWeight;
+      document.querySelector("#height").innerText = "Height: " + pokeHeight;
+      document.querySelector("#number").innerText = "No. " + pokeNo;
     })
     .catch((err) => {
       console.log(`error ${err}`);
